@@ -1,0 +1,91 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int convalida(string domanda){
+	int n;
+	do{
+		cout<<domanda;
+		cin>>n;
+	} while(n<=0);
+	return n;
+}
+
+void separatore(){
+	cout<<"============================================"<<endl;
+}
+
+void elenco(long long int vet[], int max){
+	//dichiarazione
+	int i;
+	string elenco="";
+	string SEP="|";
+
+	for(i=0; i<max; i++){
+		elenco=elenco + to_string(vet[i]) + SEP;
+	}
+	cout<<elenco<<endl;
+}
+
+void creaSequenza(int numEl, long long int vet[]) {
+	int num1, num2; //variabili di appoggio
+	int i;
+	
+	vet[0]=0; //e' sempre cosi
+	num1=vet[0];
+	
+	if(numEl>1){ // mi servono almeno due numeri
+		vet[1]=1;
+		num2=vet[1];
+	}
+	
+	for(i=2; i<numEl; i++){
+		vet[i]=num1+ num2;  // es. vet[3]= 1 +2
+		num1=num2;			// num1=1
+		num2= vet[i];		//num2= 2
+	}
+
+}
+void somma(int max, long long int vet[]){
+	long long int somma,i;
+	somma=0;
+	for(i=0; i<max; i++){
+		somma=somma+vet[i];
+	}
+	cout<<"la somma dei numeri memorizzati nel vettore e' di: "<< somma << endl;
+}
+
+void SecondoVett(long long int vet[], int max){
+	int doppio[max], i;
+	string elenco="";
+	string SEP="|";
+	for( i=0; i<max; i++){
+		doppio[i]=vet[i]*2;
+		elenco= elenco + to_string(doppio[i])+ SEP;
+	}
+	cout<<"gli elementi contenuti nel secondo vettore sono: "<< elenco << endl;
+}
+
+int main(){
+	//titolo
+	cout<<"SUCCESSIONE FIBONACCI "<<endl;
+	cout<<"=========================================="<<endl;
+
+	//dichiarazione
+	int num; //numero di elementi da visualizzare
+	long long int vet[num];
+	const string DOMANDA="quanti elementi vuoi visualizzare?";
+
+
+
+	num= convalida(DOMANDA);
+	separatore();
+	creaSequenza(num, vet);
+	elenco(vet, num);
+	somma(num, vet);
+	SecondoVett(vet, num);
+	system ("pause");
+
+	return 0;
+}
