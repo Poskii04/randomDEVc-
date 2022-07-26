@@ -1,0 +1,64 @@
+//ricerca di un elemento
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void separatore(){
+	cout<<"================================"<<endl;
+}
+
+void posizioneArrivo(string vett[], int num){
+	int i;
+	for(i=0; i<num; i++){
+		cout<<"inserisci il nome del/la "<< i+1 << "' classificato/a"<<endl;
+		cin>>vett[i];
+	}
+	
+}
+
+
+string caricaNome(){
+	string nome;
+	cout<<"chi vuoi cercare?"<<endl;
+	cin>> nome;
+	
+	return nome;
+}
+
+int ricercaNome(string vett[], int num, string nome){
+	int i;
+	int posizione;  
+	for(i=0; i<num; i++){
+		if(vett[i]==nome){
+			posizione=i+1;
+		}
+	}
+	return posizione;
+}
+
+
+int main(){
+	//titolo
+	cout<<"GARA PODISTICA"<<endl;
+	separatore();
+	
+	//dichiarazione
+	int num=10;
+	string vett[num];
+	string nome;
+	
+	//intput
+	posizioneArrivo(vett, num);
+	nome=caricaNome();
+	separatore();
+	
+	//output
+	if(ricercaNome(vett, num , nome)>=1){
+		cout<<nome<< " si trova al "<< ricercaNome(vett, num , nome)<< "' posto"<<endl;
+	} else{
+		cout<<"Concorrente non trovato"<<endl;
+	}
+	
+	
+}
